@@ -1,4 +1,4 @@
-import random
+import random, sys, time
 class playing_field:
   _players = {}
   def __init__(self):
@@ -123,15 +123,23 @@ class Ref():
       pitch.removePlayer(player)
     if self.players_yellowcards[player] > 2:
       removed_player[player] = players[player]
+      pitch.removePlayer(player)
       print '%s has been taken off the pitch for muliple violations' % (player)
-
+realtime = False
+if(len(sys.argv) > 1):
+  if(sys.argv[1] == 'realtime'):
+    realtime = True
 
 names = ['Adam', 'John', 'Samantha', 'Jenny',  'Josh', 'Cian', 'Herbert', 'Naomi', 'Evan', 'Arthur']
 for name in names:
   pitch.addPlayer(name)
   players[name] = Player(name)
 theRef = Ref()
+moves = 0
 while(len(players)>1):
+  moves += 1
+  print 'Move %s:' % (moves)
+  print '------------------------------'
   if len(removed_player)>= 1:
     for player in removed_player:
        players.pop(player, None)
@@ -141,5 +149,7 @@ while(len(players)>1):
       players[player].move()
     else:
       players[player].asktoplay()
+  if realtime == True:
+    time.sleep(1)
 
-print 'THE WINNER IS: %s' % (players.keys()[0])
+print 'THE WINNER IS: %s, the game took %s moves to complete' % (players.keys()[0], moves)

@@ -1,5 +1,5 @@
-These files were created by Adam Jeanes as part of a technical test for a postion at Dedsert.
-=============================================================================================
+Dedsert technical test
+========================
 
 File listing:
 -------------
@@ -39,3 +39,5 @@ dedsertgame.py
 This is a game simulation that places 10 random players on a 100x100 pitch and they move in a random direction and if any of the players comes within two blocks of the player that enters the radius first is given a yellow card and teleported to a random location on the board, if the player gets a second yellow card, they are taken out of the game for 10 'ticks' and they ask to enter the game, once they enter another players radius they are removed from the game and the last play left is the winner.
 
 I was asked to make each tick one second, but would take forever to run in regards to the ammount of moves required in the game.
+
+Recently added added a realtme hook so that each move lasts 1 second, causing games that will go on for hours if your willing to watch.
